@@ -1,60 +1,72 @@
-//Main animation for PURPLE mode
-void blue (){
+void purple (){
 
 for (uint8_t x = 0;  x < 24; x++){
   
-  for (uint8_t y = 0; y < 16; y++){
+            //int z = (x*10.6);
+            int edge = (7 - columnOffset[1][x])*4;
+            for (uint8_t y = 0; y < 16; y++){
 
-/// This 4 checks which case to use, based on the beat, or the 128 bpm timer (468ms/16frames = 29ms)    
 
-        if (y < ((((100000-beatFrame)+1) % 15)/1.9) && x > 1 && x < 8){
-            uint8_t r = blueForeground[y][0]/bright;
-            uint8_t g = blueForeground[y][1]/bright;
-            uint8_t b = blueForeground[y][2]/bright;
-            int pixelIndex = location[y][x];
-            leds.setPixel(pixelIndex, ((r << 16) | (g << 8) | b));           
-        }
-        else if (y < ((100000-beatFrame) % 15) && x > 8 && x < 17){
-            uint8_t r = blueForeground[y][0]/bright;
-            uint8_t g = blueForeground[y][1]/bright;
-            uint8_t b = blueForeground[y][2]/bright;
-            int pixelIndex = location[y][x];
-            leds.setPixel(pixelIndex, ((r << 16) | (g << 8) | b));           
-        }
-
-        else if (y < ((((100000-beatFrame)+3) % 15)/3) && x > 17 && x < 23){
-            uint8_t r = blueForeground[y][0]/bright;
-            uint8_t g = blueForeground[y][1]/bright;
-            uint8_t b = blueForeground[y][2]/bright;
-            int pixelIndex = location[y][x];
-            leds.setPixel(pixelIndex, ((r << 16) | (g << 8) | b));           
-        }
-        
-        else{
-            uint8_t r = blueBackground[y][0]/bright;
-            uint8_t g = blueBackground[y][1]/bright;
-            uint8_t b = blueBackground[y][2]/bright;
-            int pixelIndex = location[y][x];
+            
+            
+            uint8_t r = ((purpleFader[(beatFrame + (columnOffset[2][x]/5) - (2*y)) % 299][0])/ (bright + edge));
+            if(r > 0) {r--;}
+            uint8_t g = ((purpleFader[(beatFrame + (columnOffset[2][x]/5)- (2*y)) % 299][1])/(bright + edge));
+            if(g > 0) {g--;}
+            uint8_t b = ((purpleFader[(beatFrame + (columnOffset[2][x]/5)- (2*y)) % 299][2])/(bright + edge));
+            if(b > 0) {b--;}
+            pixelIndex = location[y][x];
             leds.setPixel(pixelIndex, ((r << 16) | (g << 8) | b)); 
-        }
+
+            //ears etc
+             if (x == 12 && y == 0){
+              for(int v = 385; v < 1250; v++){
+                 leds.setPixel(v, ((r << 16) | (g << 8) | b)); 
+              }
+             
+            }
+
+              
+            //glitter
+            if(map(beatFrame - lastSY,0,16,0,24)<15){
+              pixelIndex = location [map(beatFrame - lastSY,0,16,0,24)][sX];
+              int w = 255/((250 - cos_wave[sX])/8);
+              leds.setPixel(pixelIndex, ((w << 16) | (w << 8) | w)); }       
     }
   }
 
-// ears etc
 
-    for (uint16_t v = 385;  v < 1250; v++){
-                uint8_t r = blueFader[((beatFrame-12) % 15)][0]/bright;
-                uint8_t g = blueFader[((beatFrame-11) % 15)][1]/bright;
-                uint8_t b = blueFader[((beatFrame-11) % 15)][2]/bright;
-                leds.setPixel(v, ((r << 16) | (g << 8) | b)); 
-    }
+
+
  
     digitalWrite(13, HIGH);
     leds.show();  // not sure if this function is needed  to update each frame
     digitalWrite(13, LOW);
 
-    if (millis() > lastBeat + 29){
-    beatFrame ++;
-    lastBeat = millis();
+    if (millis() > lastBeat + 30){
+    beatFrame = beatFrame + 1;
+    lastBeat = millis();      
     }
+
+    if (millis() > lastSX + 300 + c ){
+      int sY = 5;
+      sX = random (24); 
+      lastSY = beatFrame;
+      lastSX = millis();
+      c = random (1000);
+      }    
+    
+    
+
+
+    
 }
+
+
+
+
+
+
+
+ 
+    
