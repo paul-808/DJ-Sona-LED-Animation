@@ -1,5 +1,5 @@
 // main animation for RED mode (unfinished, currently just pulses gently)
-
+// NOTE: Error test fount an issue between this and the interrupt - something about the red animation is mucking the interrupts
 void red (){
 
               for (int c = 0; c < 256; c++){
