@@ -1,5 +1,5 @@
 // main animation for RED mode (unfinished, currently just pulses gently)
-// NOTE: Error test fount an issue between this and the interrupt - something about the red animation is mucking the interrupts    
+// NOTE: Error test fount an issue between this and the interrupt - an entire animation cycle is run per loop, rather than a single frame. Add interrupts or revise to calculate one frame per loop   
 void red (){
 
               for (int c = 0; c < 256; c++){
