@@ -1,5 +1,3 @@
-// main animatin for BLUE mode
-
 void blue (){
 
 for (uint8_t x = 0;  x < 24; x++){

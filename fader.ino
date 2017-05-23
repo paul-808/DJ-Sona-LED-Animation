@@ -1,5 +1,3 @@
-//simple fast fade calculation, borrowed from open arduino examples
-
 int fader (int currentpixel, int faderate){
   
   // get the pixel value

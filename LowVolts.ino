@@ -6,3 +6,4 @@ void lowVolt(){
   else if (voltage <= 6.2) {battstat = 0;} 
   else {battstat = 2;}
 }
+

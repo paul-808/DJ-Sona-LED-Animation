@@ -1,6 +1,3 @@
-
-// plasma animation
-
 void plasma (){
      // arbitrary seed to calculate the three time displacement variables t,t2,t3
  

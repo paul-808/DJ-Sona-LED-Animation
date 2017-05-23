@@ -8,21 +8,28 @@ void buttons (){
 
 if (b1 == LOW && b2 == HIGH && b3 == HIGH){
     reading = 1; 
-    delay(200);
+    delay(100);
     }
 else if (b1 == HIGH && b2 == LOW && b3 == HIGH){
     reading = 2; 
-    delay(200);
+    delay(100);
     }
 else if (b1 == HIGH && b2 == HIGH && b3 == LOW){
     reading = 3; 
-    delay(200);
+    delay(100);
     }
 else if (b1 == LOW && b2 == LOW && b3 == LOW){
-    delay(200);
-  
+    delay(100);  
     reading = 4; }
 
+else if (b1 == LOW && b2 == HIGH && b3 == LOW){
+    delay(100);
+  
+    reading = 5; }
+else if (b1 == LOW && b2 == LOW && b3 == HIGH){
+    delay(100);
+  
+    reading = 6; }
 
   // check to see if you just pressed the button
   // (i.e. the input went from LOW to HIGH),  and you've waited
@@ -56,3 +63,4 @@ void pots(){
 
   
   }
+
