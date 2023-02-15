@@ -1,5 +1,5 @@
 # DJ-Sona-LED-Animation
-Code for a teenshy-controlled LED display integrated into a DJ Sona costume
+Code for an ARM-controlled LED display integrated into a DJ Sona costume
 
 
 // Cosplay Controller
