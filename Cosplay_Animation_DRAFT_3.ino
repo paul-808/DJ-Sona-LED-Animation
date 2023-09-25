@@ -4,12 +4,10 @@
 // Sept 1, 2016
 // Generates animations for and LED array with basic controls
 // Note: contains plasma generator by Edmund "Skorn" Horn
-// ace = leds 0-384
-// OctoWS2811Lib + OctoWS2811 Shield + FFT
+// Hardware: OctoWS2811Lib + OctoWS2811 Shield + FFT
 
 // LIBRARY DEFINITIONS
 #include <OctoWS2811.h>
-//OctoWS2811 Defn. Stuff
 #define COLS_LEDs 26  // all of the following params need to be adjusted for screen size
 #define ROWS_LEDs 32  // LED_LAYOUT assumed 0 if ROWS_LEDs > 8
 #define LEDS_PER_STRIP 384
