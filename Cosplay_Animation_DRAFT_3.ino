@@ -2,8 +2,9 @@
 // Cosplay Controller
 // By Paul Jarvey
 // Sept 1, 2016
+// Generates animations for and LED array with basic controls
 // Note: contains plasma generator by Edmund "Skorn" Horn
-// face = leds 0-384
+// ace = leds 0-384
 // OctoWS2811Lib + OctoWS2811 Shield + FFT
 
 // LIBRARY DEFINITIONS
